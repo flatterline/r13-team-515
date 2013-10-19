@@ -1,4 +1,3 @@
 Leftright::Application.routes.draw do
-  root to: 'defaults#index'
-
+  root to: 'screenshots#index'
 end

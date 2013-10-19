@@ -11,5 +11,10 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
+//= require mustache
 //= require_tree .
+
+// Note: I've removed UJS and TurboLinks for now. If we
+// need them we can add them back in later. - Jim
+// require jquery_ujs
+// require turbolinks

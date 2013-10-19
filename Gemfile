@@ -13,7 +13,10 @@ gem 'imgkit'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# JS Library:
+# -----------
 gem 'jquery-rails'
+gem "mustache-js-rails", "~> 0.0.4"
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
