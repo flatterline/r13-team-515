@@ -19,6 +19,8 @@ class IMGKit
       else
         default.split('/').last
       end
+    else
+      default
     end
   end
 end
