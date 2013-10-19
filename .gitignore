@@ -21,3 +21,5 @@
 /config/database.yml
 
 /lib/.DS_Store
+
+.ruby-gemset
