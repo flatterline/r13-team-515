@@ -1,0 +1,9 @@
+<% Publication.all.each do |publication| -%>
+  <div>
+    <%= image_tag publication.logo_url if publication.logo_url.present? -%>
+    <h2><%= publication.name -%></h2>
+    <% publication.publication_sections.each do |section| -%>
+      <p><%= section.name -%> => <%= section.url -%></p>
+    <% end -%>
+  </div>
+<% end -%>
