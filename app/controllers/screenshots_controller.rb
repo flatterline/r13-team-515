@@ -20,6 +20,9 @@ class ScreenshotsController < ApplicationController
     @right_pub     = Publication.friendly.find(params[:right])
     @right_section = @right_pub.publication_sections.where(name: params[:section]).first
     @right_image   = @right_section.screenshots.where(timestamp: params[:timestamp]).first
+
+    @screenshots     = Screenshot.all
+    @available_times = Screenshot.select(:timestamp).group(:timestamp)
   end
 
 private
