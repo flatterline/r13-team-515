@@ -3,12 +3,16 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
+gem 'coffee-rails',   '~> 4.0.0'
+gem 'dragonfly',      '~> 0.9.15'
+gem 'imgkit'
 gem 'mysql2'
-
+gem 'rack-cache',     :require => 'rack/cache'
 gem 'sass-rails',     '~> 4.0.0'
 gem 'uglifier',       '>= 1.3.0'
-gem 'coffee-rails',   '~> 4.0.0'
-gem 'imgkit'
+gem 'whenever'
+
+
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby

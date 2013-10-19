@@ -4,6 +4,9 @@
     <h2><%= publication.name -%></h2>
     <% publication.publication_sections.each do |section| -%>
       <p><%= section.name -%> => <%= section.url -%></p>
+      <% section.screenshots.each do |screenshot| %>
+        <%= image_tag screenshot.image.thumb('600x600').url %>
+      <% end %>
     <% end -%>
   </div>
 <% end -%>

@@ -27,6 +27,7 @@ role :db,  domain, :primary => true
 
 # deploy:assets:symlink comes from Capistrano deploy/asset in Capfile
 after 'deploy:assets:symlink', 'deploy:symlink_config'
+after 'deploy:symlink_config', 'deploy:dragonfly:symlink'
 after 'deploy:restart',        'deploy:cleanup'
 
 namespace :deploy do
@@ -38,4 +39,12 @@ namespace :deploy do
   task :restart do
     run "touch #{current_path}/tmp/restart.txt"
   end
+
+  namespace :dragonfly do
+    desc "Symlink the Rack::Cache files"
+    task :symlink, :roles => [:app] do
+      run "mkdir -p #{shared_path}/tmp/dragonfly && ln -nfs #{shared_path}/tmp/dragonfly #{release_path}/tmp/dragonfly"
+    end
+  end
+
 end

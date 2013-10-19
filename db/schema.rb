@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131019024126) do
+ActiveRecord::Schema.define(version: 20131019033552) do
 
   create_table "publication_sections", force: true do |t|
     t.integer "publication_id"
@@ -19,11 +19,19 @@ ActiveRecord::Schema.define(version: 20131019024126) do
     t.string  "url"
   end
 
-  add_index "publication_sections", ["publication_id"], name: "index_publication_sections_on_publication_id"
+  add_index "publication_sections", ["publication_id"], name: "index_publication_sections_on_publication_id", using: :btree
 
   create_table "publications", force: true do |t|
     t.string   "name"
     t.string   "logo_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "screenshots", force: true do |t|
+    t.integer  "publication_section_id"
+    t.string   "image_uid"
+    t.string   "image_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
