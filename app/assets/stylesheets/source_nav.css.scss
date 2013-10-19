@@ -6,10 +6,14 @@
  * top level navigation for selecting and changing
  * news sources within the application.
  */
+
+.source-nav-container {
+  font-size: 1.25rem; // This attribute defines the entire size of the navigation.
+}
+
 .source-nav-container {
   background: rgba(0,0,0,0.05);
   border-bottom: 1px solid rgba(0,0,0,0.1);
-  font-size: 1.25rem;
   height: 2.5em;
   left: 0;
   position: absolute;
