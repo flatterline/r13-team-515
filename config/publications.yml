@@ -1,0 +1,244 @@
+publications:
+  nytimes:
+    name: The New York Times
+    logo_url: http://i1.nyt.com/images/misc/nytlogo379x64.gif
+    sections:
+      home:
+        url: http://www.nytimes.com/
+      politics:
+        url: http://www.nytimes.com/pages/politics/
+
+  wapo:
+    name: The Washington Post
+    logo_url: http://img.washingtonpost.com/rw/sites/twpweb/img/logos/twp-hp-logo.png?t=20131008153900
+    sections:
+      home:
+        url: http://www.washingtonpost.com/
+      politics:
+        url: http://www.washingtonpost.com/politics
+
+  latimes:
+    name: Los Angeles Times
+    logo_url: http://www.latimes.com/images/logoSmall.png
+    sections:
+      home:
+        url: http://www.latimes.com/
+      politics:
+        url: http://www.latimes.com/nation/politics/
+
+  guardian:
+    name: The Guardian US
+    logo_url: http://static.guim.co.uk/static/37760fb37d456760d257b5efb7ef6fc9b7070819/common/images/logos/the-guardian/titlepiece.gif
+    sections:
+      home:
+        url: http://www.theguardian.com/us
+      politics:
+        url:
+
+  aljazeera:
+    name: Aljazeera America
+    logo_url: http://america.aljazeera.com/content/dam/ajam/logos/logo-header-new.png
+    sections:
+      home:
+        url: http://america.aljazeera.com/
+      politics:
+        url:
+
+  cbs:
+    name: CBS News
+    logo_url: http://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/CBS_logo.svg/200px-CBS_logo.svg.png
+    sections:
+      home:
+        url: http://www.cbsnews.com/
+      politics:
+        url: http://www.cbsnews.com/politics/
+
+  nbc:
+    name: NBC News
+    logo_url: http://media1.s-nbcnews.com/i/MSNBC/Templates/z_Story_Hybrid/img/nbcnews-cover-logo-top.png
+    sections:
+      home:
+        url: http://www.nbcnews.com/
+      politics:
+        url: http://www.nbcnews.com/id/3032553/ns/politics/
+
+  foxnews:
+    name: Fox News
+    logo_url: http://global.fncstatic.com/static/v/all/img/head/logo-foxnews-update.png
+    sections:
+      home:
+        url: http://www.foxnews.com/
+      politics:
+        url: http://www.foxnews.com/politics/index.html
+
+  cnn:
+    name: CNN
+    logo_url: http://i.cdn.turner.com/cnn/.e/img/3.0/global/header/hdr-main.png
+    sections:
+      home:
+        url: http://www.cnn.com/
+      politics:
+        url: http://www.cnn.com/POLITICS/
+
+  yahoo:
+    name: Yahoo! News
+    logo_url: http://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Yahoo%21_logo.svg/228px-Yahoo%21_logo.svg.png
+    sections:
+      home:
+        url: http://news.yahoo.com/
+      politics:
+        url: http://news.yahoo.com/politics/
+
+  abc:
+    name: ABC News
+    logo_url: http://a.abcnews.com/assets/images/navigation/abc-logo.png
+    sections:
+      home:
+        url: http://abcnews.go.com/
+      politics:
+        url: http://abcnews.go.com/politics
+
+  rollingstone:
+    name: Rolling Stone
+    logo_url: http://www.rollingstone.com/images/fe/rsLogoTrans.png
+    sections:
+      home:
+        url: http://www.rollingstone.com/
+      politics:
+        url: http://www.rollingstone.com/politics
+
+  atlantic:
+    name: The Atlantic
+    logo_url: http://cdn.theatlantic.com/static/front/images/logo/black-transparent.png
+    sections:
+      home:
+        url: http://www.theatlantic.com/
+      politics:
+        url: http://www.theatlantic.com/politics/
+
+  npr:
+    name: NPR
+    logo_url: http://media.npr.org/chrome/news/nprlogo_138x46.gif
+    sections:
+      home:
+        url: http://www.npr.org/sections/news/
+      politics:
+        url: http://www.npr.org/sections/politics/
+
+  usatoday:
+    name: USA Today
+    logo_url: http://usatoday30.usatoday.com/marketing/media_kit/images/USAT-Fullcolor.gif
+    sections:
+      home:
+        url: http://www.usatoday.com/
+      politics:
+        url: http://www.usatoday.com/news/politics/
+
+  drudge:
+    name: Drudge Report
+    logo_url: http://www.drudgereport.com/i/logo9.gif
+    sections:
+      home:
+        url: http://www.drudgereport.com/
+      politics:
+        url:
+
+  huffpo:
+    name: The Huffington Post
+    logo_url: http://s.huffpost.com/images/v/logos/v4/homepage.gif?v9
+    sections:
+      home:
+        url: http://www.huffingtonpost.com/
+      politics:
+        url: http://www.huffingtonpost.com/politics/
+
+  chicagotribune:
+    name: Chicago Tribune
+    logo_url: http://www.chicagotribune.com/images/logo.png
+    sections:
+      home:
+        url: http://www.chicagotribune.com/
+      politics:
+        url: http://www.chicagotribune.com/news/politics/
+
+  reuters:
+    name: Reuters
+    logo_url: http://www.reuters.com/resources_v2/images/masthead-logo.gif
+    sections:
+      home:
+        url: http://www.reuters.com/
+      politics:
+        url: http://www.reuters.com/politics
+
+  reddit:
+    name: Reddit
+    logo_url: http://thumbs.reddit.com/t5_2qh3l.png?v=6ba076b489507a56decbcd0fc416636b
+    sections:
+      home:
+        url: http://www.reddit.com/r/news/
+      politics:
+        url: http://www.reddit.com/r/politics/
+
+  bing:
+    name: Bing News
+    logo_url: http://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Bing_logo_%282013%29.svg/166px-Bing_logo_%282013%29.svg.png
+    sections:
+      home:
+        url: http://www.bing.com/news
+      politics:
+        url: http://www.bing.com/news?q=political+news
+
+  salon:
+    name: Salon
+    logo_url: http://upload.wikimedia.org/wikipedia/en/thumb/b/b3/Salon_website_logo.png/250px-Salon_website_logo.png
+    sections:
+      home:
+        url: http://www.salon.com/category/news/
+      politics:
+        url: http://www.salon.com/category/politics/
+
+  bloomberg:
+    name: Bloomberg
+    logo_url: http://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Bloomberg_News_logo.png/200px-Bloomberg_News_logo.png
+    sections:
+      home:
+        url: http://www.bloomberg.com/
+      politics:
+        url: http://www.bloomberg.com/politics/
+
+  usnews:
+    name: "U.S. News & World Report"
+    logo_url: http://static.usnews.com/static/images/ah/usn-logo-home.png
+    sections:
+      home:
+        url: http://www.usnews.com/
+      politics:
+        url: http://www.usnews.com/news/politics
+
+  bbc:
+    name: BBC
+    logo_url: http://static.bbci.co.uk/frameworks/barlesque/2.51.6/desktop/3.5/img/blq-blocks_grey_alpha.png
+    sections:
+      home:
+        url: http://www.bbc.com/
+      politics:
+        url:
+
+  msn:
+    name: MSN News
+    logo_url: http://upload.wikimedia.org/wikipedia/en/thumb/b/b6/New_MSN.svg/170px-New_MSN.svg.png
+    sections:
+      home:
+        url: http://news.msn.com/
+      politics:
+        url: http://news.msn.com/politics
+
+  # pubname:
+  #   name:
+  #   logo_url:
+  #   sections:
+  #     home:
+  #       url:
+  #     politics:
+  #       url:
+
