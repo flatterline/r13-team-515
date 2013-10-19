@@ -28,6 +28,9 @@ GEM
     arel (4.0.0)
     atomic (1.1.14)
     builder (3.1.4)
+    byebug (2.3.1)
+      columnize (~> 0.3.6)
+      debugger-linecache (~> 1.2.0)
     capistrano (2.15.5)
       highline
       net-scp (>= 1.0.0)
@@ -42,7 +45,9 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    columnize (0.3.6)
     daemons (1.1.9)
+    debugger-linecache (1.2.0)
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.0.2)
@@ -128,6 +133,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  byebug
   capistrano (~> 2.15.5)
   capistrano_colors
   coffee-rails (~> 4.0.0)
