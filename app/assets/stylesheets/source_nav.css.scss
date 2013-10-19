@@ -1,0 +1,97 @@
+/**
+ * Source Nav:
+ * -----------
+ *
+ * The source-nav namespaced components comprise the
+ * top level navigation for selecting and changing
+ * news sources within the application.
+ */
+.source-nav-container {
+  background: rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  font-size: 1.25rem;
+  height: 2.5em;
+  left: 0;
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+}
+
+.source-nav-items {
+  list-style: none;
+}
+
+.source-nav-item {
+  position: absolute;
+  top: 0;
+  width: 50%;
+}
+
+.source-nav-left {
+  left: 0;
+  text-align: right;
+}
+
+.source-nav-right {
+  right: 0;
+}
+
+.source-nav-select {
+  color: #000;
+  display: block;
+  font-weight: 600;
+  padding: 0.5em 3em;
+  text-decoration: none;
+}
+
+/**
+ * CSS Dropdown Arrows:
+ * --------------------
+ * We're using pseudo-elements to draw
+ * the dropdown arrows.
+ *
+ * :before - The arrow.
+ * :after - The arrow's containing box.
+ */
+.source-nav-select:after,
+.source-nav-select:before  {
+  content: "";
+  display: block;
+  position: absolute;
+  right: -2em;
+}
+
+.source-nav-select:after {
+  background: #000;
+  height: 1.25em;
+  width: 1.25em;
+  top: 0.5em;
+  z-index: 0;
+}
+
+.source-nav-select:before {
+  border-left: 0.4em solid transparent;
+  border-right: 0.4em solid transparent;
+  border-top: 0.4em solid #fff;
+  height: 0;
+  width: 0;
+  top: 0.95em;
+  z-index: 1;
+}
+
+.source-nav-left .source-nav-select:after {
+  right: 1em;
+}
+
+.source-nav-right .source-nav-select:after {
+  left: 1em;
+}
+
+.source-nav-left .source-nav-select:before {
+  right: 1.25em;
+}
+
+.source-nav-right .source-nav-select:before {
+  left: 1.25em;
+}
