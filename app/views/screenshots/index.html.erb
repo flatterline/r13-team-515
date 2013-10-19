@@ -5,6 +5,9 @@
       <h2><%= publication.name -%></h2>
       <% publication.publication_sections.each do |section| -%>
         <p><%= section.name -%> => <%= section.url -%></p>
+        <% section.screenshots.each do |screenshot| %>
+          <%= image_tag screenshot.image.thumb('600x600').url %>
+        <% end %>
       <% end -%>
     </div>
   <% end -%>
@@ -15,8 +18,11 @@
     <div>
       <%= image_tag publication.logo_url if publication.logo_url.present? -%>
       <h2><%= publication.name -%></h2>
-      <% publication.publication_sections.each do |section| -%>
+      <% publication.publication_sections.reverse.each do |section| -%>
         <p><%= section.name -%> => <%= section.url -%></p>
+        <% section.screenshots.each do |screenshot| %>
+          <%= image_tag screenshot.image.thumb('600x600').url %>
+        <% end %>
       <% end -%>
     </div>
   <% end -%>
