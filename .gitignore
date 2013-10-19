@@ -25,3 +25,4 @@
 .ruby-gemset
 
 /vendor/gem_reference/
+/public/system

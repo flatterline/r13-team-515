@@ -19,21 +19,29 @@ ActiveRecord::Schema.define(version: 20131019033552) do
     t.string  "url"
   end
 
-  add_index "publication_sections", ["publication_id"], name: "index_publication_sections_on_publication_id", using: :btree
+  add_index "publication_sections", ["publication_id", "name"], name: "index_publication_sections_on_publication_id_and_name", unique: true
+  add_index "publication_sections", ["publication_id"], name: "index_publication_sections_on_publication_id"
 
   create_table "publications", force: true do |t|
     t.string   "name"
     t.string   "logo_url"
+    t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "publications", ["slug"], name: "index_publications_on_slug", unique: true
+
   create_table "screenshots", force: true do |t|
     t.integer  "publication_section_id"
+    t.integer  "timestamp",              default: 0
     t.string   "image_uid"
     t.string   "image_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "screenshots", ["publication_section_id"], name: "index_screenshots_on_publication_section_id"
+  add_index "screenshots", ["timestamp", "publication_section_id"], name: "index_screenshots_on_timestamp_and_publication_section_id", unique: true
 
 end

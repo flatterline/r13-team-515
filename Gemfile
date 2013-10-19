@@ -1,43 +1,33 @@
 source 'https://rubygems.org'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+ruby '2.0.0'
 
-gem 'coffee-rails',   '~> 4.0.0'
-gem 'dragonfly',      '~> 0.9.15'
-gem 'imgkit'
-gem 'mysql2'
-gem 'rack-cache',     :require => 'rack/cache'
-gem 'sass-rails',     '~> 4.0.0'
-gem 'uglifier',       '>= 1.3.0'
-gem 'whenever'
+gem 'rails', '~> 4.0.0'
 
+gem 'dragonfly',         '~> 0.9.15'
+gem 'friendly_id',                    github: 'norman/friendly_id'
+gem 'imgkit',            '~> 1.3.9'
+gem 'jquery-rails',      '~> 3.0.4'
+gem 'mustache-js-rails', '~> 0.0.4'
+gem 'mysql2',            '~> 0.3.13'
+gem 'rack-cache',        '~> 1.2',    require: 'rack/cache'
+gem 'turbolinks',        '~> 1.3.0'
+gem 'whenever',          '~> 0.8.4'
 
-
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
-
-# JS Library:
-# -----------
-gem 'jquery-rails'
-gem "mustache-js-rails", "~> 0.0.4"
-
-group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
+group :assets do
+  gem 'coffee-rails', '~> 4.0.0'
+  gem 'sass-rails',   '~> 4.0.0'
+  gem 'uglifier',     '~> 2.2.1'
 end
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
 group :development do
-  gem 'capistrano',    '~> 2.15.5'
-  gem 'capistrano_colors'
-  gem 'byebug'
-  gem 'sqlite3'
-  gem 'thin'
+  gem 'binding_of_caller', '~> 0.7.2'
+  gem 'better_errors',     '~> 1.0.1'
+  gem 'byebug',            '~> 2.3.1'
+  gem 'capistrano',        '~> 2.15.5'
+  gem 'capistrano_colors', '~> 0.5.5'
+  gem 'quiet_assets',      '~> 1.0.2'
+  gem 'pg',                '~> 0.17.0'
+  gem 'sqlite3',           '~> 1.3.8'
+  gem 'thin',              '~> 1.6.0'
 end
