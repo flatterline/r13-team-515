@@ -12,7 +12,9 @@
 //
 //= require jquery
 //= require mustache
-//= require_tree .
+//= require underscore
+//= require app
+//= require_tree ./ui
 
 // Note: I've removed UJS and TurboLinks for now. If we
 // need them we can add them back in later. - Jim
