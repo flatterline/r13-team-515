@@ -23,3 +23,5 @@
 .DS_Store
 
 .ruby-gemset
+
+/vendor/gem_reference/
