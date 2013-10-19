@@ -14,7 +14,7 @@ end
 
 IMGKit.configure do |config|
   if Rails.env.production?
-    config.default_options = {'use-xserver': true}
+    config.default_options = {"use-xserver" => true}
     config.wkhtmltoimage = "xvfb-run --server-args=\"-screen 0, 1280x1024x24\" #{Rails.root.join('bin/wkhtmltoimage-amd64').to_s}"
   else
     config.wkhtmltoimage = Rails.root.join('bin/wkhtmltoimage').to_s
