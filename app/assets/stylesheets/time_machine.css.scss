@@ -1,0 +1,23 @@
+/**
+ * Source Nav:
+ * -----------
+ *
+ * The source-nav namespaced components comprise the
+ * top level navigation for selecting and changing
+ * news sources within the application.
+ */
+
+.time-machine-container {
+  font-size: 1.25rem; // This attribute defines the entire size of the navigation.
+}
+
+.time-machine-container {
+  background: rgba(0,0,0,0.05);
+  border-top: 1px solid rgba(0,0,0,0.1);
+  bottom: 0;
+  height: 2.5em;
+  left: 0;
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+}
