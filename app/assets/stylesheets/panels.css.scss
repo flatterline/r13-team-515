@@ -1,0 +1,27 @@
+/**
+ * Panels:
+ * -------
+ *
+ * The panel namespaced components describe
+ * the actuale panes of content displaying screenshots
+ * from a news source.
+ */
+
+.panel {
+  height: 100%;
+  overflow: auto;
+  position: absolute;
+  top: 0;
+  width: 50%;
+}
+
+.panel-left {
+  border-right: 1px solid rgba(0,0,0,1);
+  left: 0;
+  z-index: 1;
+}
+
+.panel-right {
+  right: 0;
+  z-index: 0;
+}
