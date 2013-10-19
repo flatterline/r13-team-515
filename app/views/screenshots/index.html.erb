@@ -1,30 +1,27 @@
+<!-- Source Nav: Top level Navigation for Toggling Sources. -->
+<nav class="source-nav source-nav-container">
+  <ul class="source-nav source-nav-items">
+    <li class="source-nav source-nav-item source-nav-left">
+      <a href="" id="left-source" class="source-nav source-nav-select"><%= @left_pub.name -%></a>
+    </li>
+    <li class="source-nav source-nav-item source-nav-right">
+      <a href="" id="left-source" class="source-nav source-nav-select"><%= @right_pub.name -%></a>
+    </li>
+  </ul>
+</nav>
+<!-- End: Source Nav -->
+
 <div id="left-panel" class="panel panel-left">
-  <% Publication.all.each do |publication| -%>
-    <div>
-      <%= image_tag publication.logo_url if publication.logo_url.present? -%>
-      <h2><%= publication.name -%></h2>
-      <% publication.publication_sections.each do |section| -%>
-        <p><%= section.name -%> <%= section.url -%></p>
-        <% section.screenshots.each do |screenshot| %>
-          <p><%= screenshot.created_at.strftime("%m/%d/%Y %I:%M %p") %></p>
-          <%= image_tag screenshot.image.thumb('600x5000').url %>
-        <% end %>
-      <% end -%>
-    </div>
-  <% end -%>
+  <%= image_tag @left_image.present? ? @left_image.image.url : 'http://placehold.it/1024&text=No+Image+Available', width: '100%' -%>
 </div>
 
 <div id="right-panel" class="panel panel-right">
-  <% Publication.all.each do |publication| -%>
-    <div>
-      <%= image_tag publication.logo_url if publication.logo_url.present? -%>
-      <h2><%= publication.name -%></h2>
-      <% publication.publication_sections.reverse.each do |section| -%>
-        <p><%= section.name -%> => <%= section.url -%></p>
-        <% section.screenshots.each do |screenshot| %>
-          <%= image_tag screenshot.image.thumb('600x5000').url %>
-        <% end %>
-      <% end -%>
-    </div>
-  <% end -%>
+  <%= image_tag @right_image.present? ? @right_image.image.url  : 'http://placehold.it/1024&text=No+Image+Available', width: '100%' -%>
 </div>
+
+<!-- Time Machine Bar: Slider / Date Picker -->
+<nav class="time-machine time-machine-container">
+  <a href="#" class="time-machine time-machine-date-select"><a>
+  <%= I18n.l Time.at(@left_image.timestamp) -%>
+</nav>
+

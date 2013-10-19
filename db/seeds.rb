@@ -17,3 +17,18 @@ YAML.load(open(Rails.root.join('config', 'publications.yml')))['publications'].e
 
   publication.save!
 end
+
+## Screenshots
+
+puts
+puts "Grabbing initial screenshots..."
+
+require Rails.root.join('lib', 'screenshooter.rb')
+
+timestamp = Time.now.to_i
+
+PublicationSection.where(name: :home).each do |section|
+  printf " - #{section.url}"
+  Screenshooter.new(section, timestamp).grab
+  puts ' => OK'
+end
