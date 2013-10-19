@@ -31,4 +31,5 @@ group :development do
   gem 'capistrano_colors'
   gem 'byebug'
   gem 'sqlite3'
+  gem 'thin'
 end
