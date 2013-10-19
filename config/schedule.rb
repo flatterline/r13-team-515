@@ -13,6 +13,10 @@
 #   rake "some:great:rake:task"
 # end
 
+set :output, "/home/deploy/apps/wyld-stallyns/current/log/cron_log.log"
+env :MAILTO, "irish@burstdev.com"
+env :PATH,   "/usr/local/bin:/usr/bin:/usr/sbin"
+
 # Grab at 6am, 12pm, 5pm
 every '0 6,12,17 * * *' do
   rake :fetch_screenshots
