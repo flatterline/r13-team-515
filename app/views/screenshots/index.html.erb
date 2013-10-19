@@ -1,12 +1,23 @@
-<% Publication.all.each do |publication| -%>
-  <div>
-    <%= image_tag publication.logo_url if publication.logo_url.present? -%>
-    <h2><%= publication.name -%></h2>
-    <% publication.publication_sections.each do |section| -%>
-      <p><%= section.name -%> => <%= section.url -%></p>
-      <% section.screenshots.each do |screenshot| %>
-        <%= image_tag screenshot.image.thumb('600x600').url %>
-      <% end %>
-    <% end -%>
-  </div>
-<% end -%>
+<div id="left-panel" class="panel panel-left">
+  <% Publication.all.each do |publication| -%>
+    <div>
+      <%= image_tag publication.logo_url if publication.logo_url.present? -%>
+      <h2><%= publication.name -%></h2>
+      <% publication.publication_sections.each do |section| -%>
+        <p><%= section.name -%> => <%= section.url -%></p>
+      <% end -%>
+    </div>
+  <% end -%>
+</div>
+
+<div id="right-panel" class="panel panel-right">
+  <% Publication.all.each do |publication| -%>
+    <div>
+      <%= image_tag publication.logo_url if publication.logo_url.present? -%>
+      <h2><%= publication.name -%></h2>
+      <% publication.publication_sections.each do |section| -%>
+        <p><%= section.name -%> => <%= section.url -%></p>
+      <% end -%>
+    </div>
+  <% end -%>
+</div>
