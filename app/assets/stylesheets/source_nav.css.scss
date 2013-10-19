@@ -12,11 +12,12 @@
 }
 
 .source-nav-container {
-  background: rgba(0,0,0,0.05);
-  border-bottom: 1px solid rgba(0,0,0,0.1);
+  background: rgba(0,0,0,0.75);
+  border-bottom: 1px solid rgba(0,0,0,0.85);
+  color: #fff;
   height: 2.5em;
   left: 0;
-  position: absolute;
+  position: fixed;
   top: 0;
   z-index: 10;
   width: 100%;
@@ -42,7 +43,7 @@
 }
 
 .source-nav-select {
-  color: #000;
+  color: #fff;
   display: block;
   font-weight: 600;
   padding: 0.5em 3em;
