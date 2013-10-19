@@ -27,7 +27,7 @@ role :db,  domain, :primary => true
 
 # deploy:assets:symlink comes from Capistrano deploy/asset in Capfile
 after 'deploy:assets:symlink', 'deploy:symlink_config'
-after 'deploy:symlink_config', 'deploy:dragonfly:symlink'
+after 'deploy:update_code',    'deploy:dragonfly:symlink'
 after 'deploy:restart',        'deploy:cleanup'
 
 namespace :deploy do
