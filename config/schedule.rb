@@ -12,8 +12,9 @@
 #   runner "MyModel.some_method"
 #   rake "some:great:rake:task"
 # end
-#
-every 12.hours do
+
+# Grab at 6am, 12pm, 5pm
+every '0 6,12,17 * * *' do
   rake :fetch_screenshots
 end
 
