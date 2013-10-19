@@ -3,6 +3,8 @@ task :fetch_screenshots => :environment do
   timestamp = Time.now.to_i
 
   PublicationSection.all.each do |section|
-    Screenshooter.grab section, timestamp
+    printf " - #{section.url}"
+    Screenshooter.new(section, timestamp).grab
+    puts ' => OK'
   end
 end
