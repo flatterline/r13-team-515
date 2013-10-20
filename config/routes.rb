@@ -3,5 +3,5 @@ Leftright::Application.routes.draw do
 
   get '/publications' => 'publications#index'
   get '/screenshots' => 'screenshots#index'
-  get '/:timestamp(/:left(/:right(/:section)))' => 'screenshots#index'
+  get '/:section(/:left(/:right(/:timestamp)))' => 'screenshots#index'
 end

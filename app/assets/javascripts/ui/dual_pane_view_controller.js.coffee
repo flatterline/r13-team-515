@@ -86,9 +86,10 @@ class app.ui.DualPaneViewController
       parseInt(el.timestamp) == parseInt(timestamp)
 
   updatePanes: ->
+    @displayTimeStamp()
     @leftPane.render @screenForPub(@leftPublicationId)
     @rightPane.render @screenForPub(@rightPublicationId)
-    @displayTimeStamp()
+    @updatePageTitle()
 
   ##
   # Formats a timestamp to something more user friendly.
@@ -135,6 +136,9 @@ class app.ui.DualPaneViewController
       @publications = _.sortBy(data, (publication) -> publication.name)
       @leftDropdown.renderPublications(@publications)
       @rightDropdown.renderPublications(@publications)
-      callback() if typeof callback == "function"
       @leftPublicationSlug = _.findWhere(@publications, {id: @leftPublicationId}).slug
       @rightPublicationSlug = _.findWhere(@publications, {id: @rightPublicationId}).slug
+      callback() if typeof callback == "function"
+
+  updatePageTitle: () ->
+    document.title = $('#left-source').html() + ' vs. ' + $('#right-source').html()

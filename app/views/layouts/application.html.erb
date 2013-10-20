@@ -20,7 +20,7 @@
 
       <%= link_to 'Help', {}, id: 'help' %>
       <%= form_tag :screenshots, id: 'section-form' do -%>
-        <%= select_tag :section, options_for_select([['News Homepage', :home], ['Politics Section', :politics]]) -%>
+        <%= select_tag :section, options_for_select([['News Homepage', :home], ['Politics Section', :politics]], params[:section]) -%>
       <% end -%>
     </nav>
 
