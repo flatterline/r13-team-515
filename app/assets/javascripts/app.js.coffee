@@ -34,8 +34,9 @@ $(document).ready ->
     rightDropdown: $("#right-source")
     leftPane: $('#left-panel img').not('.img-loader')
     rightPane: $('#right-panel img').not('.img-loader')
-    leftPublicationId: parseInt $("#left-source").attr("data-publication-id")
-    rightPublicationId: parseInt $("#right-source").attr("data-publication-id")
+    leftPublicationId: parseInt $("#left-source").data('publication-id')
+    rightPublicationId: parseInt $("#right-source").data('publication-id')
+    sectionSelect: $('#section-form select')
     slider: $("#date-select-slider")
     timeDisplay: $("#time-display");
 

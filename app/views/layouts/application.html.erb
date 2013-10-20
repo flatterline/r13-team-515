@@ -17,7 +17,11 @@
     <!-- Time Machine Bar: Slider / Date Picker -->
     <nav class="time-machine time-machine-container">
       <input type="range" name="points" min="0" max="100" value="100" class="time-machine-range js-ui-slider" id="date-select-slider">
+
       <%= link_to 'Help', {}, id: 'help' %>
+      <%= form_tag :screenshots, id: 'section-form' do -%>
+        <%= select_tag :section, options_for_select([['News Homepage', :home], ['Politics Section', :politics]]) -%>
+      <% end -%>
     </nav>
 
     <!-- Template: Source List -->

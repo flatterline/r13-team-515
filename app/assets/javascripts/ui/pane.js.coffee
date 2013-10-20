@@ -13,10 +13,5 @@ class app.ui.Pane
     @element = element
 
   render: (source) ->
-    @element.hide()
-    # $('.img-loader').show()
-
-    @element.load( ->
-      # $('.img-loader').hide()
-      $(@).show()
-    ).attr 'src', source.image_url
+    url = if source then source.image_url else 'http://placehold.it/1024&text=No+Image+Available'
+    @element.attr 'src', url

@@ -14,15 +14,15 @@ class ScreenshotsController < ApplicationController
     # @right_source = Source.random.except(@left_source)
 
     @left_pub     = Publication.friendly.find(params[:left])
-    @left_section = @left_pub.publication_sections.where(name: params[:section]).first
-    @left_image   = @left_section.screenshots.where(timestamp: params[:timestamp]).first
+    # @left_section = @left_pub.publication_sections.where(name: params[:section]).first
+    # @left_image   = @left_section.screenshots.where(timestamp: params[:timestamp]).first
 
     @right_pub     = Publication.friendly.find(params[:right])
-    @right_section = @right_pub.publication_sections.where(name: params[:section]).first
-    @right_image   = @right_section.screenshots.where(timestamp: params[:timestamp]).first
+    # @right_section = @right_pub.publication_sections.where(name: params[:section]).first
+    # @right_image   = @right_section.screenshots.where(timestamp: params[:timestamp]).first
 
     @screenshots     = Screenshot.all
-    @available_times = Screenshot.select(:timestamp).group(:timestamp)
+    # @available_times = Screenshot.select(:timestamp).group(:timestamp)
   end
 
 private

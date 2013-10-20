@@ -40,6 +40,7 @@ class app.ui.SourceDropdown
   setPublication: (@currentPublication) ->
     @didSelect(@currentPublication) if typeof @didSelect == "function"
     @$element.html @currentPublication.name
+    @$element.data('publication-id', @currentPublication.id)
 
   renderPublications: (@publications) ->
     @$list.html("")
@@ -51,5 +52,5 @@ class app.ui.SourceDropdown
   handleSelection: (event) =>
     $item         = $(event.currentTarget)
     publicationId = parseInt $item.attr("data-publication-id")
-    @setPublication _.findWhere(@publications, {id: publicationId})
+    @setPublication _.findWhere(@publications, { id: publicationId })
     @deactivate()

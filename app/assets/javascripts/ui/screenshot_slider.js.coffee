@@ -64,7 +64,8 @@ class app.ui.ScreenshotSlider
 
       if @interval != interval
         @interval = interval
-        @didChange(@intervals[interval]) if typeof @didChange == "function"
+        @timestamp = @intervals[interval]
+        @didChange() if typeof @didChange == "function"
 
     max = @container.width() - @control.width()
     if x > 0 and x < max
@@ -83,3 +84,4 @@ class app.ui.ScreenshotSlider
   setIntervals: (@intervals) ->
     @translateToPercentage(100)
     @interval = @intervals.length
+    @timestamp = _.last(@intervals)
