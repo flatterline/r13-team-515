@@ -9,6 +9,9 @@
 
 $base-size: 1.25rem; // This variable defines the entire size of the navigation.
 
+.rumble .source-nav-container {
+  top: 39px;
+}
 .source-nav-container {
   background: rgba(0,0,0,0.75);
   border-bottom: 1px solid rgba(0,0,0,0.85);
@@ -17,7 +20,7 @@ $base-size: 1.25rem; // This variable defines the entire size of the navigation.
   height: 2.5em;
   left: 0;
   position: fixed;
-  top: 39px;
+  top: 0;
   z-index: 10;
   width: 100%;
 }
