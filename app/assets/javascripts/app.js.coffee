@@ -37,6 +37,7 @@ $(document).ready ->
     leftPublicationId: parseInt $("#left-source").attr("data-publication-id")
     rightPublicationId: parseInt $("#right-source").attr("data-publication-id")
     slider: $("#date-select-slider")
+    timeDisplay: $("#time-display");
 
   # Initialize the view:
   new app.ui.DualPaneViewController(config)

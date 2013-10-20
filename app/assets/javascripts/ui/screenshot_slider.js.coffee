@@ -65,19 +65,11 @@ class app.ui.ScreenshotSlider
       if @interval != interval
         @interval = interval
         @didChange(@intervals[interval]) if typeof @didChange == "function"
-        console.log @formatTimestamp @intervals[interval]
 
     max = @container.width() - @control.width()
     if x > 0 and x < max
       app.util.transform(@control[0], x, 0);
       @percent = x/max*100
-
-  ##
-  # Formats a timestamp to something more user friendly.
-  formatTimestamp: (timestamp) ->
-    date = new Date(timestamp*1000)
-    months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-    "#{months[date.getMonth()]} #{date.getDate()} | #{date.getHours()}:00"
 
   ##
   # Translates the control to given percentage.

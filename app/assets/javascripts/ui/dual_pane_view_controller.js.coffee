@@ -19,6 +19,7 @@ class app.ui.DualPaneViewController
     @rightPane            = new app.ui.Pane(config.rightPane)
     @leftPublicationId    = config.leftPublicationId
     @rightPublicationId   = config.rightPublicationId
+    @timeDisplay          = config.timeDisplay
 
     # Callbacks
 
@@ -49,14 +50,36 @@ class app.ui.DualPaneViewController
     @getPublicationData()
     @getScreenshotData(@setSliderIntervals)
 
+  ##
+  # Retrieves the screenshot for a specific publication
+  # at a specific timestamp.
   screenForPubAtTime: (publicationId, timestamp) ->
     screens = _.filter @screenshots, (el) -> el.publication_id == publicationId
     _.find screens, (el) ->
       parseInt(el.timestamp) == parseInt(timestamp)
 
+  ##
+  # Updates the UI to display the screenshots and provide
+  # visual feedback for a given timestamp.
   updateTimestamp: (timestamp) ->
     @leftPane.render @screenForPubAtTime(@leftPublicationId,timestamp)
     @rightPane.render @screenForPubAtTime(@rightPublicationId,timestamp)
+    @displayTimeStamp(timestamp)
+
+  ##
+  # Formats a timestamp to something more user friendly.
+  formatTimestamp: (timestamp) ->
+    date = new Date(timestamp*1000)
+    months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    "#{months[date.getMonth()]} #{date.getDate()} | #{date.getHours()}:00"
+
+  displayTimeStamp: (timestamp) ->
+    @timeDisplay.html(@formatTimestamp timestamp)
+    @timeDisplay.addClass("active")
+    clearTimeout(@hudTimeout) if @hudTimeout
+    @hudTimeout = setTimeout =>
+      @timeDisplay.removeClass("active")
+    , 1500
 
   ##
   # Set the publications for the slider.
