@@ -1,0 +1,35 @@
+#date-select-slider-abstract {
+  bottom: 0;
+  height: 100%;
+  margin-left: 20px;
+  position: absolute;
+  width: 80%;
+}
+
+.slider-container {
+  font-size: 1.5rem;
+  position: relative;
+}
+
+.slider-track {
+  background: rgba(255,255,255,0.25);
+  height: 0.1em;
+  margin-top: -0.05em;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+}
+
+.slider-control {
+  background: rgba(255,255,255,1);
+  border-radius: 1em;
+  display: block;
+  height: 1em;
+  left: 0;
+  margin-top: -0.5em;
+  position: absolute;
+  top: 50%;
+  width: 1em;
+
+  -webkit-transform: translate3d(0,0,0);
+}
