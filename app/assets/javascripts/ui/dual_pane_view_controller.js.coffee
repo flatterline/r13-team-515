@@ -60,15 +60,26 @@ class app.ui.DualPaneViewController
 
     # HTML5 History
     window.addEventListener "popstate", (event) =>
-      console.log location.toString()
+      console.log location.pathname.toString()
 
     # Load data
-    @getPublicationData()
+    @getPublicationData(@finishInitialize)
     @getScreenshotData(@finishInitialize)
 
   finishInitialize: () =>
-    @setSliderIntervals()
-    @updatePanes()
+    if (typeof @publications == "object") and (typeof @screenshots == "object")
+      @setSliderIntervals()
+      @updatePanes()
+
+  ##
+  # Parses a route.
+  parseRoute: (route) ->
+    route = route.split("/")
+    parsed =
+      section: route[0]
+      leftPublication: _.findWhere(@publications, {slug: route[1]})
+      rightPublication: _.findWhere(@publications, {slug: route[2]})
+      timestamp: parseInt route[3]
 
   ##
   # Updated the history with a route for the specific sources
