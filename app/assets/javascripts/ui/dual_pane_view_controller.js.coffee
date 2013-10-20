@@ -27,8 +27,6 @@ class app.ui.DualPaneViewController
     @rightDropdown.didActivate = => @leftDropdown.deactivate()
 
     # Handle selection changes.
-    # TODO: Communicate new publication to associated screenshot pane.
-    # TODO: Communicate new publication to screenshot slider. (or... just get new increments here in this controller)
     @leftDropdown.didSelect  =
       (publication) =>
         source = _.find @screenshots, (el) -> el.publication_id == publication.id
@@ -43,9 +41,22 @@ class app.ui.DualPaneViewController
         @rightPublicationId = publication.id
         @setSliderIntervals()
 
+    # Handle time slider changes.
+    @slider.didChange = (timestamp) =>
+      @updateTimestamp(timestamp)
+
     # Load data
     @getPublicationData()
     @getScreenshotData(@setSliderIntervals)
+
+  screenForPubAtTime: (publicationId, timestamp) ->
+    screens = _.filter @screenshots, (el) -> el.publication_id == publicationId
+    _.find screens, (el) ->
+      parseInt(el.timestamp) == parseInt(timestamp)
+
+  updateTimestamp: (timestamp) ->
+    @leftPane.render @screenForPubAtTime(@leftPublicationId,timestamp)
+    @rightPane.render @screenForPubAtTime(@rightPublicationId,timestamp)
 
   ##
   # Set the publications for the slider.

@@ -53,10 +53,16 @@ class app.ui.ScreenshotSlider
   # based on a mouse event.
   handleDrag: (e) =>
     x = e.pageX - @container.offset().left
+
     if @intervals.length > 0
       intervalWidth = @container.width()/(@intervals.length-1)
       interval = Math.round(x/intervalWidth)
-      console.log @formatTimestamp @intervals[interval]
+
+      if @interval != interval
+        @interval = interval
+        @didChange(@intervals[interval]) if typeof @didChange == "function"
+        console.log @formatTimestamp @intervals[interval]
+
     if x > 0 and x < @container.width() - @control.width()
       app.util.transform(@control[0], x, 0);
 
@@ -79,3 +85,4 @@ class app.ui.ScreenshotSlider
   # the local interval object.
   setIntervals: (@intervals) ->
     @translateToPercentage(100)
+    @interval = @intervals.length
