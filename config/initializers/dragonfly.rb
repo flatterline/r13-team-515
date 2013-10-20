@@ -13,7 +13,7 @@ end
 
 class ImageOptimProcessor
   def optim(temp_object)
-    io = ImageOptim.new
+    io = ImageOptim.new(:pngout => false)
     optimized = io.optimize_image(temp_object.path)
     optimized.nil? ? temp_object : optimized
   end
