@@ -23,7 +23,7 @@ class app.ui.ScreenshotSlider
     @min = parseInt @$element.attr("min")
     @max = parseInt @$element.attr("max")
     @value = parseInt @$element.attr("value")
-    @template =
+    @intervals = []
 
     if typeof @$element.attr("id") == "string"
       @id = "#{@$element.attr("id")}-abstract"
@@ -34,28 +34,48 @@ class app.ui.ScreenshotSlider
     @control = @container.find(".slider-control")
     @control.mousedown (e) => @activate(); false
 
+  ##
+  # Enables tracking for the slider by listening
+  # to mouseevents on the document.
   activate: () =>
     @activated = true
-    $(document).bind "mousemove", @translate
+    $(document).bind "mousemove", @handleDrag
     $(document).bind "mouseup", @deactivate
 
+  ##
+  # Disables document level mouse event handlers.
   deactivate: () =>
-    $(document).unbind "mousemove", @translate
+    $(document).unbind "mousemove", @handleDrag
     $(document).unbind "mouseup", @deactivate
 
-  translate: (e) =>
+  ##
+  # Determines the location of the slider control
+  # based on a mouse event.
+  handleDrag: (e) =>
     x = e.pageX - @container.offset().left
+    if @intervals.length > 0
+      intervalWidth = @container.width()/(@intervals.length-1)
+      interval = Math.round(x/intervalWidth)
+      console.log @formatTimestamp @intervals[interval]
     if x > 0 and x < @container.width() - @control.width()
       app.util.transform(@control[0], x, 0);
 
-  setPublications: (leftPublicationId,rightPublicationId) ->
-    sourceResults = _.filter app.SCREENSHOTS, (screen) ->
-      (screen.publication_id == leftPublicationId || screen.publication_id == rightPublicationId)
+  ##
+  # Formats a timestamp to something more user friendly.
+  formatTimestamp: (timestamp) ->
+    date = new Date(timestamp*1000)
+    months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    "#{months[date.getMonth()]} #{date.getDate()} | #{date.getHours()}:00"
 
-    orderedResults = _.sortBy sourceResults, (screen) ->
-      screen.timestamp
+  ##
+  # Translates the control to given percentage.
+  translateToPercentage: (percent) ->
+    percent = percent / 100 if percent > 1
+    x = percent * (@container.width() - @control.width())
+    app.util.transform(@control[0], x, 0);
 
-    @screens = _.groupBy orderedResults, (screen) ->
-      screen.timestamp
-
-    @intervals = _.keys(@screens)
+  ##
+  # Resets the slider position pending new data and updates
+  # the local interval object.
+  setIntervals: (@intervals) ->
+    @translateToPercentage(100)
