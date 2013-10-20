@@ -3,7 +3,7 @@
 
 ##
 # DualPaneViewController
-# ------
+# ----------------------
 # Manages the communication between UI elements
 # for the application's primary view.
 class app.ui.DualPaneViewController
@@ -17,8 +17,16 @@ class app.ui.DualPaneViewController
     @slider = new app.ui.ScreenshotSlider(config.slider)
 
     # Callbacks
+
+    # Only allow one dropdown active at a given point of time.
     @leftDropdown.didActivate = => @rightDropdown.deactivate()
     @rightDropdown.didActivate = => @leftDropdown.deactivate()
+
+    # Handle selection changes.
+    # TODO: Communicate new publication to associated screenshot pane.
+    # TODO: Communicate new publication to screenshot slider. (or... just get new increments here in this controller)
+    @leftDropdown.didSelect = (publication) => console.log publication
+    @rightDropdown.didSelect = (publication) => console.log publication
 
     # Load data
     @getPublicationData()
