@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require mustache
+//= require hopscotch
 //= require_tree .
 
 // Note: I've removed UJS and TurboLinks for now. If we
