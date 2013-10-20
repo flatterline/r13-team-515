@@ -13,6 +13,7 @@ class app.ui.SourceDropdown
   @ACTIVE_CLASS = "active"
 
   constructor: (element) ->
+    @publicationId = 0
     @$element = $(element)
     @$element.click(@toggleActive)
     listId = "#{@$element.attr("id")}-list"
@@ -36,8 +37,19 @@ class app.ui.SourceDropdown
     @$list.scrollTop(0)
     @didActivate() if typeof @didActivate == "function"
 
-  renderPublications: (publications) ->
+  setPublication: (@currentPublication) ->
+    @didSelect(@currentPublication) if typeof @didSelect == "function"
+    @$element.html @currentPublication.name
+
+  renderPublications: (@publications) ->
     @$list.html("")
-    for publication in publications
-      item = Mustache.to_html(app.ui.SourceDropdown.TEMPLATE_ITEM, name: publication.name)
-      @$list.append(item)
+    for publication in @publications
+      $item = $(Mustache.to_html(app.ui.SourceDropdown.TEMPLATE_ITEM, {name: publication.name, id: publication.id}))
+      $item.click(@handleSelection)
+      @$list.append($item)
+
+  handleSelection: (event) =>
+    $item = $(event.currentTarget)
+    publicationId = parseInt $item.attr("data-publication-id")
+    @setPublication _.findWhere(@publications, {id: publicationId})
+    @deactivate()
