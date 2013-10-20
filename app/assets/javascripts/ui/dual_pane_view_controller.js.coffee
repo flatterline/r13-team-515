@@ -12,11 +12,13 @@ class app.ui.DualPaneViewController
   # Initializes view objects and binds any necessary
   # callbacks or other handlers.
   constructor: (config={}) ->
-    @leftDropdown  = new app.ui.SourceDropdown(config.leftDropdown)
-    @rightDropdown = new app.ui.SourceDropdown(config.rightDropdown)
-    @slider        = new app.ui.ScreenshotSlider(config.slider)
-    @leftPane      = new app.ui.Pane(config.leftPane)
-    @rightPane     = new app.ui.Pane(config.rightPane)
+    @leftDropdown         = new app.ui.SourceDropdown(config.leftDropdown)
+    @rightDropdown        = new app.ui.SourceDropdown(config.rightDropdown)
+    @slider               = new app.ui.ScreenshotSlider(config.slider)
+    @leftPane             = new app.ui.Pane(config.leftPane)
+    @rightPane            = new app.ui.Pane(config.rightPane)
+    @leftPublicationId    = config.leftPublicationId
+    @rightPublicationId   = config.rightPublicationId
 
     # Callbacks
 
@@ -29,32 +31,47 @@ class app.ui.DualPaneViewController
     # TODO: Communicate new publication to screenshot slider. (or... just get new increments here in this controller)
     @leftDropdown.didSelect  =
       (publication) =>
-        console.log publication
         source = _.find @screenshots, (el) -> el.publication_id == publication.id
         @leftPane.render(source)
+        @leftPublicationId = publication.id
+        @setSliderIntervals()
 
     @rightDropdown.didSelect =
       (publication) =>
-        console.log publication
         source = _.find @screenshots, (el) -> el.publication_id == publication.id
         @rightPane.render(source)
+        @rightPublicationId = publication.id
+        @setSliderIntervals()
 
     # Load data
     @getPublicationData()
-    @getScreenshotData()
+    @getScreenshotData(@setSliderIntervals)
+
+  ##
+  # Set the publications for the slider.
+  setSliderIntervals: =>
+    sourceResults = _.filter @screenshots, (screen) =>
+      (screen.publication_id == @leftPublicationId || screen.publication_id == @rightPublicationId)
+    orderedResults = _.sortBy sourceResults, (screen) ->
+      screen.timestamp
+    screens = _.groupBy orderedResults, (screen) ->
+      screen.timestamp
+    @slider.setIntervals(_.keys(screens))
 
   ##
   # Retrieve the screenshot payload to reduce
   # redundant requests.
-  getScreenshotData: ->
+  getScreenshotData: (callback) ->
     $.getJSON("/screenshots.json").done (data) =>
       @screenshots = data
+      callback() if typeof callback == "function"
 
   ##
   # Retrieve the screenshot payload to reduce
   # redundant requests.
-  getPublicationData: ->
+  getPublicationData: (callback) ->
     $.getJSON("/publications.json").done (data) =>
       @publications = _.sortBy(data, (publication) -> publication.name)
       @leftDropdown.renderPublications(@publications)
       @rightDropdown.renderPublications(@publications)
+      callback() if typeof callback == "function"
