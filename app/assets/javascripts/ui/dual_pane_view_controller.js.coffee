@@ -74,7 +74,7 @@ class app.ui.DualPaneViewController
   ##
   # Formats a timestamp to something more user friendly.
   formatTimestamp: (timestamp) ->
-    moment(timestamp*1000).format('MMMM Do YYYY, h:mm a')
+    moment(timestamp*1000).format('MMM Do YYYY, h:mm a')
 
   displayTimeStamp: () ->
     timestamp = @slider.timestamp
