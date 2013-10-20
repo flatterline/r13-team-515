@@ -10,14 +10,14 @@
 class app.ui.SourceDropdown
   @TEMPLATE_LIST = $("#template-source-list").html()
   @TEMPLATE_ITEM = $("#template-source-item").html()
-  @ACTIVE_CLASS = "active"
+  @ACTIVE_CLASS  = "active"
 
   constructor: (element) ->
     @publicationId = 0
-    @$element = $(element)
+    @$element      = $(element)
     @$element.click(@toggleActive)
-    listId = "#{@$element.attr("id")}-list"
-    @$list = $(Mustache.to_html(app.ui.SourceDropdown.TEMPLATE_LIST, id: listId))
+    listId         = "#{@$element.attr("id")}-list"
+    @$list         = $(Mustache.to_html(app.ui.SourceDropdown.TEMPLATE_LIST, id: listId))
     $("body").append(@$list)
 
   toggleActive: (event) =>
@@ -49,7 +49,7 @@ class app.ui.SourceDropdown
       @$list.append($item)
 
   handleSelection: (event) =>
-    $item = $(event.currentTarget)
+    $item         = $(event.currentTarget)
     publicationId = parseInt $item.attr("data-publication-id")
     @setPublication _.findWhere(@publications, {id: publicationId})
     @deactivate()
