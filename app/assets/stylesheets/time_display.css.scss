@@ -1,0 +1,29 @@
+$td-shadow-color: rgba(0,0,0,1);
+$td-transition: opacity 500ms ease-out 0.5s;
+
+.time-display {
+  background: rgba(0,0,0,0.25);
+  color: #fff;
+  font-size: 3.5rem;
+  font-weight: bold;
+  left: 0%;
+  margin-top: -1.5em;
+  opacity: 0;
+  padding: 0.5em;
+  position: absolute;
+  text-align: center;
+  text-shadow: 1px 1px 0 $td-shadow-color, 2px 2px 0 $td-shadow-color;
+  top: 50%;
+  width: 100%;
+  z-index: 10;
+
+  -webkit-transition: $td-transition;
+  -ms-transition: $td-transition;
+  -moz-transition: $td-transition;
+  -o-transition: $td-transition;
+  transition: $td-transition;
+}
+
+.time-display.active {
+  opacity: 1;
+}
