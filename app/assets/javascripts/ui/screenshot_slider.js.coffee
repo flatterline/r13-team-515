@@ -12,7 +12,7 @@
 # appearance.
 class app.ui.ScreenshotSlider
   @CSS_CLASS = "js-ui-slider"
-  @TEMPLATE_ID = "template-ui-slider"
+  @TEMPLATE = $("#template-ui-slider").html()
 
   ##
   # Renders the template in place of the native
@@ -23,12 +23,12 @@ class app.ui.ScreenshotSlider
     @min = parseInt @$element.attr("min")
     @max = parseInt @$element.attr("max")
     @value = parseInt @$element.attr("value")
-    @template = $("##{app.ui.ScreenshotSlider.TEMPLATE_ID}").html()
+    @template =
 
     if typeof @$element.attr("id") == "string"
       @id = "#{@$element.attr("id")}-abstract"
 
-    @$element.after(Mustache.to_html(@template, {id: @id}))
+    @$element.after(Mustache.to_html(app.ui.ScreenshotSlider.TEMPLATE, {id: @id}))
     @$element.hide()
     @container = @$element.next()
     @control = @container.find(".slider-control")
