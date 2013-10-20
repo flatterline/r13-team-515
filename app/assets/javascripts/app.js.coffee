@@ -33,8 +33,8 @@ $(document).ready ->
     leftDropdown: $("#left-source")
     rightDropdown: $("#right-source")
     slider: $("#date-select-slider")
-    leftPane: $('#left-panel img')
-    rightPane: $('#right-panel img')
+    leftPane: $('#left-panel img').not('.img-loader')
+    rightPane: $('#right-panel img').not('.img-loader')
 
   # Initialize the view:
   new app.ui.DualPaneViewController(config)
