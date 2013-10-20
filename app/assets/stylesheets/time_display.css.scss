@@ -10,6 +10,7 @@ $td-transition: opacity 500ms ease-out 0.5s;
   margin-top: -1.5em;
   opacity: 0;
   padding: 0.5em;
+  pointer-events: none;
   position: absolute;
   text-align: center;
   text-shadow: 1px 1px 0 $td-shadow-color, 2px 2px 0 $td-shadow-color;
