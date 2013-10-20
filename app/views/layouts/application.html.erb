@@ -1,41 +1,41 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Leftright</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= render partial: 'layouts/webfonts' %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <%= csrf_meta_tags -%>
 
-<%= yield %>
+    <title>Leftright</title>
 
-<!-- Time Machine Bar: Slider / Date Picker -->
-<nav class="time-machine time-machine-container">
-  <input type="range" name="points" min="0" max="100" value="100" class="time-machine-range js-ui-slider" id="date-select-slider">
-</nav>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true -%>
+    <%= render partial: 'layouts/webfonts' -%>
+  </head>
+  <body>
+    <%= yield -%>
+    <!-- Time Machine Bar: Slider / Date Picker -->
+    <nav class="time-machine time-machine-container">
+      <input type="range" name="points" min="0" max="100" value="100" class="time-machine-range js-ui-slider" id="date-select-slider">
+    </nav>
 
-<!-- Template: Source List Item -->
-<script type="text/html" id="template-source-list">
-  <ul class="source-list" id="{{id}}"></ul>
-</script>
+    <!-- Template: Source List Item -->
+    <script type="text/html" id="template-source-list">
+      <ul class="source-list" id="{{id}}"></ul>
+    </script>
 
-<!-- Template: Source List Item -->
-<script type="text/html" id="template-source-item">
-  <li class="source-item">
-    <a class="source-item-title">{{title}}</a>
-    <img src="{{src}}" alt="{{title}}" class="source-item-image">
-  </li>
-</script>
+    <!-- Template: Source List Item -->
+    <script type="text/html" id="template-source-item">
+      <li class="source-item">
+        <a class="source-item-title">{{title}}</a>
+        <img src="{{src}}" alt="{{title}}" class="source-item-image">
+      </li>
+    </script>
 
-<!-- Template: Slider UI Widget -->
-<script type="text/html" id="template-ui-slider">
-  <div class="slider-container" id="{{id}}">
-    <a href="#" class="slider-control"></a>
-    <span class="slider-track"></span>
-  </div>
-</script>
+    <!-- Template: Slider UI Widget -->
+    <script type="text/html" id="template-ui-slider">
+      <div class="slider-container" id="{{id}}">
+        <a href="#" class="slider-control"></a>
+        <span class="slider-track"></span>
+      </div>
+    </script>
 
-</body>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true -%>
+  </body>
 </html>
