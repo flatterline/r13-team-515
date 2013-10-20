@@ -36,6 +36,8 @@ unless defined?(Screenshooter)
         %x[bin/wkhtmltoimage --javascript-delay 5000 --load-error-handling ignore #{@section.url} #{temp_image} > /dev/null 2>&1 ]
       else
         %x[xvfb-run --server-args="-screen 0, 1280x1024x24" bin/wkhtmltoimage-amd64 --use-xserver #{@section.url} #{temp_image}]
+        image_optim = ImageOptim.new(:pngout => false)
+        image_optim.optimize_image!(temp_image)
       end
       @image = File.open(temp_image).read
     end
