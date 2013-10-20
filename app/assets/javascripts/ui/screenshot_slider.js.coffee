@@ -24,6 +24,7 @@ class app.ui.ScreenshotSlider
     @max = parseInt @$element.attr("max")
     @value = parseInt @$element.attr("value")
     @intervals = []
+    @percent = 0
 
     if typeof @$element.attr("id") == "string"
       @id = "#{@$element.attr("id")}-abstract"
@@ -33,6 +34,9 @@ class app.ui.ScreenshotSlider
     @container = @$element.next()
     @control = @container.find(".slider-control")
     @control.mousedown (e) => @activate(); false
+
+    $(window).resize =>
+      @translateToPercentage(@percent)
 
   ##
   # Enables tracking for the slider by listening
@@ -63,8 +67,10 @@ class app.ui.ScreenshotSlider
         @didChange(@intervals[interval]) if typeof @didChange == "function"
         console.log @formatTimestamp @intervals[interval]
 
-    if x > 0 and x < @container.width() - @control.width()
+    max = @container.width() - @control.width()
+    if x > 0 and x < max
       app.util.transform(@control[0], x, 0);
+      @percent = x/max*100
 
   ##
   # Formats a timestamp to something more user friendly.
@@ -75,9 +81,8 @@ class app.ui.ScreenshotSlider
 
   ##
   # Translates the control to given percentage.
-  translateToPercentage: (percent) ->
-    percent = percent / 100 if percent > 1
-    x = percent * (@container.width() - @control.width())
+  translateToPercentage: (@percent) ->
+    x = @percent/100 * (@container.width() - @control.width())
     app.util.transform(@control[0], x, 0);
 
   ##
