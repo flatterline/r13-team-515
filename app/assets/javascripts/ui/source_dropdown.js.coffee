@@ -37,7 +37,7 @@ class app.ui.SourceDropdown
     @$list.scrollTop(0)
     @didActivate() if typeof @didActivate == "function"
 
-  setPublication: (@currentPublication) ->
+  setPublication: (@currentPublication) =>
     @didSelect(@currentPublication) if typeof @didSelect == "function"
     @$element.html @currentPublication.name
     @$element.data('publication-id', @currentPublication.id)
