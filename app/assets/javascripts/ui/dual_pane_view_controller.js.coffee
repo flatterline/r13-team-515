@@ -35,6 +35,7 @@ class app.ui.DualPaneViewController
         source = _.find @screenshots, (el) -> el.publication_id == publication.id && el.section_name == sectionName
         @leftPane.render(source)
         @leftPublicationId = publication.id
+        @leftPublicationSlug = publication.slug
         @setSliderIntervals()
 
     @rightDropdown.didSelect =
@@ -43,7 +44,9 @@ class app.ui.DualPaneViewController
         source = _.find @screenshots, (el) -> el.publication_id == publication.id && el.section_name == sectionName
         @rightPane.render(source)
         @rightPublicationId = publication.id
+        @rightPublicationSlug = publication.slug
         @setSliderIntervals()
+        @pushHistory()
 
     # Handle time slider changes.
     @slider.didChange = () =>
@@ -51,6 +54,10 @@ class app.ui.DualPaneViewController
 
     @sectionSelect.didSelect = () =>
       @updatePanes()
+
+    # HTML5 History
+    window.addEventListener "popstate", (event) =>
+      console.log location.toString()
 
     # Load data
     @getPublicationData()
@@ -60,6 +67,13 @@ class app.ui.DualPaneViewController
     @setSliderIntervals()
     @updatePanes()
 
+  ##
+  # Updated the history with a route for the specific sources
+  # at a selected timestamp.
+  pushHistory: ->
+    route = "/left/#{@leftPublicationSlug}/right/#{@rightPublicationSlug}/timestamp/#{@timestamp}"
+    if Modernizr.history
+      history.pushState(null, null, route)
 
   ##
   # Retrieves the screenshot for a specific publication
@@ -72,23 +86,28 @@ class app.ui.DualPaneViewController
       parseInt(el.timestamp) == parseInt(timestamp)
 
   updatePanes: ->
+    @displayTimeStamp()
     @leftPane.render @screenForPub(@leftPublicationId)
     @rightPane.render @screenForPub(@rightPublicationId)
-    @displayTimeStamp()
+    @updatePageTitle()
 
   ##
   # Formats a timestamp to something more user friendly.
   formatTimestamp: (timestamp) ->
     moment(timestamp*1000).format('MMM Do YYYY, h:mm a')
 
+  ##
+  # Displays a niceles formatted time to the user in
+  # addition to updating the panes.
   displayTimeStamp: () ->
-    timestamp = @slider.timestamp
-    @timeDisplay.html(@formatTimestamp timestamp)
+    @timestamp = @slider.timestamp
+    @timeDisplay.html(@formatTimestamp @timestamp)
     @timeDisplay.addClass("active")
     clearTimeout(@hudTimeout) if @hudTimeout
     @hudTimeout = setTimeout =>
       @timeDisplay.removeClass("active")
     , 1500
+    @pushHistory()
 
   ##
   # Set the publications for the slider.
@@ -117,4 +136,9 @@ class app.ui.DualPaneViewController
       @publications = _.sortBy(data, (publication) -> publication.name)
       @leftDropdown.renderPublications(@publications)
       @rightDropdown.renderPublications(@publications)
+      @leftPublicationSlug = _.findWhere(@publications, {id: @leftPublicationId}).slug
+      @rightPublicationSlug = _.findWhere(@publications, {id: @rightPublicationId}).slug
       callback() if typeof callback == "function"
+
+  updatePageTitle: () ->
+    document.title = $('#left-source').html() + ' vs. ' + $('#right-source').html()
