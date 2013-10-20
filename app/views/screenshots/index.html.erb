@@ -19,9 +19,3 @@
   <%= image_tag @right_image.present? ? @right_image.image.url  : 'http://placehold.it/1024&text=No+Image+Available', width: '100%' -%>
 </div>
 
-<!-- Time Machine Bar: Slider / Date Picker -->
-<nav class="time-machine time-machine-container">
-  <a href="#" class="time-machine time-machine-date-select"><a>
-  <%= I18n.l Time.at(@left_image.timestamp) -%>
-</nav>
-
