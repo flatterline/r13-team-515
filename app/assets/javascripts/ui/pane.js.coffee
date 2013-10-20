@@ -17,5 +17,5 @@ class app.ui.Pane
       @element.attr('src', source.image_url)
       @element.siblings('.no-image').remove()
     else
-      @element.attr('src', "/assets/bogus.jpg")
+      @element.attr('src', "/bogus.jpg")
       @element.after('<div class="no-image">No Image Available</div>')
