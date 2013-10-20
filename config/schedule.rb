@@ -15,7 +15,7 @@
 
 set :output, "/home/deploy/apps/wyld-stallyns/current/log/cron_log.log"
 env :MAILTO, "irish@burstdev.com"
-env :PATH,   "/usr/local/bin:/usr/bin:/usr/sbin"
+env :PATH,   "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games"
 
 # Grab at 6am, 12pm, 5pm
 every '0 6,12,17 * * *' do
