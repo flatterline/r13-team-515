@@ -21,7 +21,15 @@ unless defined?(Screenshooter)
     end
 
     def create_screenshot
-      @section.screenshots.create! image: @file, timestamp: @timestamp
+      screenshot = @section.screenshots.create! image: @file, timestamp: @timestamp
+
+      # warm dragonfly cache
+      begin
+        url = Rails.env.development? ? 'http://localhost:3000' : 'http://wyld-stallyns.r13.railsrumble.com'
+        url += screenshot.image.url
+        %x[curl #{url} > /dev/null 2>&1 ]
+      rescue Exception => e
+      end
     end
 
     def encode
