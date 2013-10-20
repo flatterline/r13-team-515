@@ -10,12 +10,13 @@
   </head>
   <body>
     <%= yield -%>
+
     <!-- Time Machine Bar: Slider / Date Picker -->
     <nav class="time-machine time-machine-container">
       <input type="range" name="points" min="0" max="100" value="100" class="time-machine-range js-ui-slider" id="date-select-slider">
     </nav>
 
-    <!-- Template: Source List Item -->
+    <!-- Template: Source List -->
     <script type="text/html" id="template-source-list">
       <ul class="source-list" id="{{id}}"></ul>
     </script>
@@ -23,8 +24,7 @@
     <!-- Template: Source List Item -->
     <script type="text/html" id="template-source-item">
       <li class="source-item">
-        <a class="source-item-title">{{title}}</a>
-        <img src="{{src}}" alt="{{title}}" class="source-item-image">
+        <a class="source-item-name" href="#">{{name}}</a>
       </li>
     </script>
 
