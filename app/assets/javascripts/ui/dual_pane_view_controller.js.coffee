@@ -121,4 +121,4 @@ class app.ui.DualPaneViewController
       callback() if typeof callback == "function"
 
   updatePageTitle: () ->
-    document.title = $('#left-source').html() + ' vs. ' + $('#right-source').html()
+    document.title = $('#left-source').html() + ' vs. ' + $('#right-source').html() + ' | ' + @sectionSelect.selected().html() + ' | ' + @formatTimestamp(@slider.timestamp) + ' | All The News'
