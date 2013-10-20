@@ -14,6 +14,7 @@
 //= require mustache
 //= require hopscotch
 //= require modernizr
+//= require moment
 //= require underscore
 //= require app
 //= require_tree ./

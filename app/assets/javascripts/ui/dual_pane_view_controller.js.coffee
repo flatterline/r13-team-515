@@ -69,9 +69,7 @@ class app.ui.DualPaneViewController
   ##
   # Formats a timestamp to something more user friendly.
   formatTimestamp: (timestamp) ->
-    date = new Date(timestamp*1000)
-    months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-    "#{months[date.getMonth()]} #{date.getDate()} | #{date.getHours()}:00"
+    moment(timestamp*1000).format('MMMM Do YYYY, h:mm a')
 
   displayTimeStamp: (timestamp) ->
     @timeDisplay.html(@formatTimestamp timestamp)
