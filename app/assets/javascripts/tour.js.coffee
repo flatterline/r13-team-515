@@ -3,7 +3,7 @@ tour =
   steps: [
     {
       title: "Dude!"
-      content: "Welcome to the Wyld Stallyns Rails Rumble. We believe we've brought forth to you a most excellent <span id='adventure'>adventure</span>... submission.  "
+      content: "Welcome to the Wyld Stallyns Rails Rumble. We believe we've brought forth to you a most excellent <span id='adventure'>adventure</span>... submission. <br/><br/> <img src='http://userserve-ak.last.fm/serve/_/41172767/Wyld+Stallyns+wyldstallyns.jpg'/> "
       target: "#left-source"
       placement: "bottom"
       width: 500
