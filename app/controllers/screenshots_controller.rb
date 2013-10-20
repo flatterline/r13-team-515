@@ -29,7 +29,7 @@ private
 
   def prepare_params
     params[:timestamp] ||= Screenshot.first.timestamp
-    params[:section]   ||= :home
+    params[:section]   ||= :politics
     params[:left]      ||= 'the-new-york-times'
     params[:right]     ||= 'fox-news'
   end
