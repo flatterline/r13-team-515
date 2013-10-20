@@ -13,5 +13,9 @@ class app.ui.Pane
     @element = element
 
   render: (source) ->
-    url = if source then source.image_url else 'http://placehold.it/1024&text=No+Image+Available'
-    @element.attr 'src', url
+    if source
+      @element.attr('src', source.image_url)
+      @element.siblings('.no-image').remove()
+    else
+      @element.attr('src', "/assets/bogus.jpg")
+      @element.after('<div class="no-image">No Image Available</div>')

@@ -233,6 +233,15 @@ publications:
       politics:
         url: http://news.msn.com/politics
 
+  ap:
+    name: Associated Press
+    logo_url: http://staging.hosted.ap.org/templates/AP/data/AP-LOGO.png
+    sections:
+      home:
+        url: http://hosted.ap.org/dynamic/fronts/HOME
+      politics:
+        url: http://hosted.ap.org/dynamic/fronts/POLITICS
+
   # pubname:
   #   name:
   #   logo_url:
@@ -241,4 +250,3 @@ publications:
   #       url:
   #     politics:
   #       url:
-
