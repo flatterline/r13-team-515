@@ -18,7 +18,7 @@ env :MAILTO, "irish@burstdev.com"
 env :PATH,   "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games"
 
 # Grab at 6am, 12pm, 5pm
-every '0 6,12,17 * * *' do
+every '0 0,4,8,12,16,20 * * *' do
   rake :fetch_screenshots
 end
 
