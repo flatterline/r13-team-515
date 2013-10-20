@@ -7,14 +7,13 @@
  * news sources within the application.
  */
 
-.source-nav-container {
-  font-size: 1.25rem; // This attribute defines the entire size of the navigation.
-}
+$base-size: 1.25rem; // This variable defines the entire size of the navigation.
 
 .source-nav-container {
   background: rgba(0,0,0,0.75);
   border-bottom: 1px solid rgba(0,0,0,0.85);
   color: #fff;
+  font-size: $base-size;
   height: 2.5em;
   left: 0;
   position: fixed;
@@ -51,7 +50,8 @@
   text-decoration: none;
 }
 
-.source-nav-select:hover {
+.source-nav-select:hover,
+.source-nav-select.active {
   background: rgba(0,0,0,1);
 }
 
@@ -104,4 +104,53 @@
 
 .source-nav-right .source-nav-select:before {
   left: 1.25em;
+}
+
+/**
+ * Source Lists
+ */
+
+.source-list {
+  background: rgba(0,0,0,1);
+  bottom: 0;
+  display: none;
+  font-size: $base-size;
+  margin: 0;
+  overflow: auto;
+  padding: 0;
+  position: fixed;
+  top: 2.5em;
+  width: 50%;
+  z-index: 10;
+}
+
+.source-list.active {
+  display: block;
+}
+
+.source-item {
+  display: block;
+  padding: 0;
+}
+
+.source-item-name {
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  display: block;
+  padding: 0.5em 1.25em;
+  text-decoration: none;
+}
+
+.source-item-name:hover {
+  background: #2996cc;
+  color: #000;
+}
+
+#left-source-list {
+  text-align: right;
+  left: 0;
+}
+
+#right-source-list {
+  text-align: left;
+  right: 0;
 }
