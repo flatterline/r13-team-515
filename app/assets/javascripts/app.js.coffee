@@ -32,9 +32,11 @@ $(document).ready ->
   config =
     leftDropdown: $("#left-source")
     rightDropdown: $("#right-source")
-    slider: $("#date-select-slider")
     leftPane: $('#left-panel img').not('.img-loader')
     rightPane: $('#right-panel img').not('.img-loader')
+    leftPublicationId: parseInt $("#left-source").attr("data-publication-id")
+    rightPublicationId: parseInt $("#right-source").attr("data-publication-id")
+    slider: $("#date-select-slider")
 
   # Initialize the view:
   new app.ui.DualPaneViewController(config)
