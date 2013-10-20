@@ -108,7 +108,6 @@ class app.ui.DualPaneViewController
     @hudTimeout = setTimeout =>
       @timeDisplay.removeClass("active")
     , 1500
-    @pushHistory()
 
   ##
   # Set the publications for the slider.
