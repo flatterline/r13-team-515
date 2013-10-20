@@ -39,6 +39,5 @@ tour =
   onClose: ->
     $.cookie('tour', 'taken')
 
-
 if $.cookie('tour') != 'taken'
   hopscotch.startTour(tour)

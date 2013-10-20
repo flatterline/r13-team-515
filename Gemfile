@@ -6,7 +6,7 @@ gem 'rails', '~> 4.0.0'
 
 gem 'dragonfly',         '~> 0.9.15'
 gem 'friendly_id',                    github: 'norman/friendly_id'
-gem 'hopscotch-rails',   '~> 0.1.1.1'
+gem 'hopscotch-rails',                github: 'supairish/hopscotch-rails'
 gem 'imgkit',            '~> 1.3.9'
 gem 'image_optim',       '~> 0.9.1'
 gem 'jquery-rails',      '~> 3.0.4'
