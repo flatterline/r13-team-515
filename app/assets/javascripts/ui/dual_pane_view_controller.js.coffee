@@ -37,8 +37,7 @@ class app.ui.DualPaneViewController
         @leftPublicationId = publication.id
         @leftPublicationSlug = publication.slug
         @setSliderIntervals()
-        @updatePageTitle()
-
+        @updateBrowser()
 
     @rightDropdown.didSelect =
       (publication) =>
@@ -48,8 +47,7 @@ class app.ui.DualPaneViewController
         @rightPublicationId = publication.id
         @rightPublicationSlug = publication.slug
         @setSliderIntervals()
-        @updatePageTitle()
-        @pushHistory()
+        @updateBrowser()
 
     # Handle time slider changes.
     @slider.didChange = () =>
@@ -92,7 +90,7 @@ class app.ui.DualPaneViewController
     @displayTimeStamp()
     @leftPane.render @screenForPub(@leftPublicationId)
     @rightPane.render @screenForPub(@rightPublicationId)
-    @updatePageTitle()
+    @updateBrowser()
 
   ##
   # Formats a timestamp to something more user friendly.
@@ -143,5 +141,7 @@ class app.ui.DualPaneViewController
       @rightPublicationSlug = _.findWhere(@publications, {id: @rightPublicationId}).slug
       callback() if typeof callback == "function"
 
-  updatePageTitle: () ->
+  updateBrowser: () ->
     document.title = $('#left-source').html() + ' vs. ' + $('#right-source').html() + ' | ' + @sectionSelect.selected().html() + ' | ' + @formatTimestamp(@slider.timestamp) + ' | All The News'
+    @pushHistory()
+
