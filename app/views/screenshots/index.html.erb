@@ -2,10 +2,12 @@
 <nav class="source-nav source-nav-container">
   <ul class="source-nav source-nav-items">
     <li class="source-nav source-nav-item source-nav-left">
-      <a href="" id="left-source" class="source-nav source-nav-select"><%= @left_pub.name -%></a>
+      <a href="" id="left-source" class="source-nav source-nav-select"
+          data-publication-id="<%= @left_pub.id -%>"><%= @left_pub.name -%></a>
     </li>
     <li class="source-nav source-nav-item source-nav-right">
-      <a href="" id="right-source" class="source-nav source-nav-select"><%= @right_pub.name -%></a>
+      <a href="" id="right-source" class="source-nav source-nav-select"
+          data-publication-id=<%= @right_pub.id -%>""><%= @right_pub.name -%></a>
     </li>
   </ul>
 </nav>
