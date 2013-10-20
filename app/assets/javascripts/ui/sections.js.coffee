@@ -10,5 +10,8 @@ class app.ui.SectionSelect
   current: ->
     @current
 
-  setCurrent: ->
-    @current = @element.find('> option:selected').val()
+  selected: ->
+    @selectedOption = @element.find('> option:selected')
+
+  setCurrent: =>
+    @current = @selected().val()
