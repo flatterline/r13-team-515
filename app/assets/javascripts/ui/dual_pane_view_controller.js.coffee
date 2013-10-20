@@ -17,6 +17,7 @@ class app.ui.DualPaneViewController
     @slider               = new app.ui.ScreenshotSlider(config.slider)
     @leftPane             = new app.ui.Pane(config.leftPane)
     @rightPane            = new app.ui.Pane(config.rightPane)
+    @sectionSelect        = new app.ui.SectionSelect(config.sectionSelect)
     @leftPublicationId    = config.leftPublicationId
     @rightPublicationId   = config.rightPublicationId
     @timeDisplay          = config.timeDisplay
@@ -30,21 +31,26 @@ class app.ui.DualPaneViewController
     # Handle selection changes.
     @leftDropdown.didSelect  =
       (publication) =>
-        source = _.find @screenshots, (el) -> el.publication_id == publication.id
+        sectionName = @sectionSelect.current
+        source = _.find @screenshots, (el) -> el.publication_id == publication.id && el.section_name == sectionName
         @leftPane.render(source)
         @leftPublicationId = publication.id
         @setSliderIntervals()
 
     @rightDropdown.didSelect =
       (publication) =>
-        source = _.find @screenshots, (el) -> el.publication_id == publication.id
+        sectionName = @sectionSelect.current
+        source = _.find @screenshots, (el) -> el.publication_id == publication.id && el.section_name == sectionName
         @rightPane.render(source)
         @rightPublicationId = publication.id
         @setSliderIntervals()
 
     # Handle time slider changes.
-    @slider.didChange = (timestamp) =>
-      @updateTimestamp(timestamp)
+    @slider.didChange = () =>
+      @updatePanes()
+
+    @sectionSelect.didSelect = () =>
+      @updatePanes()
 
     # Load data
     @getPublicationData()
@@ -52,19 +58,18 @@ class app.ui.DualPaneViewController
 
   ##
   # Retrieves the screenshot for a specific publication
-  # at a specific timestamp.
-  screenForPubAtTime: (publicationId, timestamp) ->
-    screens = _.filter @screenshots, (el) -> el.publication_id == publicationId
+  # at a specific timestamp and section.
+  screenForPub: (publicationId) ->
+    sectionName = @sectionSelect.current
+    timestamp   = @slider.timestamp
+    screens     = _.filter @screenshots, (el) -> el.publication_id == publicationId && el.section_name == sectionName
     _.find screens, (el) ->
       parseInt(el.timestamp) == parseInt(timestamp)
 
-  ##
-  # Updates the UI to display the screenshots and provide
-  # visual feedback for a given timestamp.
-  updateTimestamp: (timestamp) ->
-    @leftPane.render @screenForPubAtTime(@leftPublicationId,timestamp)
-    @rightPane.render @screenForPubAtTime(@rightPublicationId,timestamp)
-    @displayTimeStamp(timestamp)
+  updatePanes: ->
+    @leftPane.render @screenForPub(@leftPublicationId)
+    @rightPane.render @screenForPub(@rightPublicationId)
+    @displayTimeStamp()
 
   ##
   # Formats a timestamp to something more user friendly.
@@ -73,7 +78,8 @@ class app.ui.DualPaneViewController
     months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     "#{months[date.getMonth()]} #{date.getDate()} | #{date.getHours()}:00"
 
-  displayTimeStamp: (timestamp) ->
+  displayTimeStamp: () ->
+    timestamp = @slider.timestamp
     @timeDisplay.html(@formatTimestamp timestamp)
     @timeDisplay.addClass("active")
     clearTimeout(@hudTimeout) if @hudTimeout
