@@ -22,7 +22,20 @@
   object
 
 ##
-# Bind the CSRF attributes.
+# Bind the CSRF attributes and configure the
+# page.
 $(document).ready ->
   app.CSRF_PARAM = $("meta[name='csrf-param']").attr("content")
   app.CSRF_TOKEN = $("meta[name='csrf-token']").attr("content")
+
+  # Setup the time slider.
+  screenSlider = new app.ui.ScreenshotSlider $("#date-select-slider")
+
+  ##
+  # Retrieve the screenshot payload to reduce
+  # redundant requests.
+  $.getJSON("/screenshots.json").done (data) ->
+    app.SCREENSHOTS = data
+    screenSlider.setPublications(1,2)
+
+
