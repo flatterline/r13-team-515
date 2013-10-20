@@ -16,6 +16,7 @@
 //= require modernizr
 //= require underscore
 //= require app
+//= require_tree .
 //= require_tree ./ui
 //= require_tree ./util
 
