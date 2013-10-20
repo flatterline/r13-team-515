@@ -54,7 +54,12 @@ class app.ui.DualPaneViewController
 
     # Load data
     @getPublicationData()
-    @getScreenshotData(@setSliderIntervals)
+    @getScreenshotData(@finishInitialize)
+
+  finishInitialize: () =>
+    @setSliderIntervals()
+    @updatePanes()
+
 
   ##
   # Retrieves the screenshot for a specific publication
