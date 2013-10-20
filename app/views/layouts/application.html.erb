@@ -3,7 +3,7 @@
   <head>
     <%= csrf_meta_tags -%>
 
-    <title><%= @left_pub.name -%> vs. <%= @right_pub.name -%> | <%= params[:section].to_sym == :home ? 'News Homepage' : 'Politics Section' -%> | <%= Time.at(params[:timestamp]).strftime("%b %e %Y, %l:%M %P") -%> | All The News</title>
+    <title><%= @left_pub.name -%> vs. <%= @right_pub.name -%> | <%= params[:section].to_sym == :home ? 'News Homepage' : 'Politics Section' -%> | <%= Time.at(params[:timestamp].to_i).strftime("%b %e %Y, %l:%M %P") -%> | All The News</title>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true -%>
     <%= render partial: 'layouts/webfonts' -%>

@@ -31,8 +31,8 @@ class app.ui.DualPaneViewController
     # Handle selection changes.
     @leftDropdown.didSelect  =
       (publication) =>
-        @sectionName = @sectionSelect.current
-        source = _.find @screenshots, (el) -> el.publication_id == publication.id && el.section_name == @sectionName
+        sectionName = @sectionSelect.current
+        source = _.find @screenshots, (el) -> el.publication_id == publication.id && el.section_name == sectionName
         @leftPane.render(source)
         @leftPublicationId = publication.id
         @leftPublicationSlug = publication.slug
@@ -42,8 +42,8 @@ class app.ui.DualPaneViewController
 
     @rightDropdown.didSelect =
       (publication) =>
-        @sectionName = @sectionSelect.current
-        source = _.find @screenshots, (el) -> el.publication_id == publication.id && el.section_name == @sectionName
+        sectionName = @sectionSelect.current
+        source = _.find @screenshots, (el) -> el.publication_id == publication.id && el.section_name == sectionName
         @rightPane.render(source)
         @rightPublicationId = publication.id
         @rightPublicationSlug = publication.slug
@@ -63,31 +63,18 @@ class app.ui.DualPaneViewController
       console.log location.toString()
 
     # Load data
-    @getPublicationData(@finishInitialize)
+    @getPublicationData()
     @getScreenshotData(@finishInitialize)
 
   finishInitialize: () =>
-    if (typeof @screenhots == "object") and (typeof @publications == "object")
-      routeConfig = @parseRoute(location.toString())
-      @sectionName = routeConfig.section || "home"
-      @setSliderIntervals()
-      @updatePanes()
-
-  ##
-  # Parses a route.
-  parseRoute: (route) ->
-    route = route.split("/")
-    parsed =
-      section: route[0]
-      leftPublication: _.findWhere(@publications, {slug: route[1]})
-      rightPublication: _.findWhere(@publications, {slug: route[2]})
-      timestamp: parseInt route[3]
+    @setSliderIntervals()
+    @updatePanes()
 
   ##
   # Updated the history with a route for the specific sources
   # at a selected timestamp.
   pushHistory: ->
-    route = "/#{@sectionName}/#{@leftPublicationSlug}/#{@rightPublicationSlug}/#{@timestamp}"
+    route = "/#{@sectionSelect.current}/#{@leftPublicationSlug}/#{@rightPublicationSlug}/#{@slider.timestamp}"
     if Modernizr.history
       history.pushState(null, null, route)
 
@@ -95,9 +82,9 @@ class app.ui.DualPaneViewController
   # Retrieves the screenshot for a specific publication
   # at a specific timestamp and section.
   screenForPub: (publicationId) ->
-    @sectionName = @sectionSelect.current
+    sectionName = @sectionSelect.current
     timestamp   = @slider.timestamp
-    screens     = _.filter @screenshots, (el) -> el.publication_id == publicationId && el.section_name == @sectionName
+    screens     = _.filter @screenshots, (el) -> el.publication_id == publicationId && el.section_name == sectionName
     _.find screens, (el) ->
       parseInt(el.timestamp) == parseInt(timestamp)
 
