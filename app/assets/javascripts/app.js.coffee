@@ -41,3 +41,6 @@ $(document).ready ->
 
   # Initialize the view:
   new app.ui.DualPaneViewController(config)
+
+  # Rails rumble banner...
+  $("#rumbleCloseButton").click -> $("body").removeClass "rumble"
