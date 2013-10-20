@@ -37,6 +37,8 @@ class app.ui.DualPaneViewController
         @leftPublicationId = publication.id
         @leftPublicationSlug = publication.slug
         @setSliderIntervals()
+        @updatePageTitle()
+
 
     @rightDropdown.didSelect =
       (publication) =>
@@ -46,6 +48,7 @@ class app.ui.DualPaneViewController
         @rightPublicationId = publication.id
         @rightPublicationSlug = publication.slug
         @setSliderIntervals()
+        @updatePageTitle()
         @pushHistory()
 
     # Handle time slider changes.
