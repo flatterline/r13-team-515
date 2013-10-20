@@ -4,7 +4,7 @@ task :fetch_screenshots => :environment do
   puts '*' * 50
   puts Time.zone.now.strftime("%m/%d/%Y %I:%m %p")
   puts '*' * 50
-  PublicationSection.where(name: 'politics').each do |section|
+  PublicationSection.all.each do |section|
     printf " - #{section.url}"
     Screenshooter.new(section, timestamp).grab
     puts ' => OK'
